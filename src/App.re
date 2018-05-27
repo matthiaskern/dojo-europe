@@ -8,11 +8,13 @@ let component = ReasonReact.reducerComponent("App");
 
 let make = _children => {
   ...component,
-  didMount: self =>
+  didMount: self => {
+    Fetcher.fetchPost(~url="https://immense-river-25513.herokuapp.com/add-location", ~body="Vienna Bois");
     Fetcher.fetchGet(
       ~url="https://immense-river-25513.herokuapp.com/locations",
       ~cb=(locations =>self.send(Update(locations)))
-    ),
+    )
+  },
   initialState: () => [||],
   reducer: (action, _state) =>
     switch (action) {
