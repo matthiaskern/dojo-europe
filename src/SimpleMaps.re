@@ -122,3 +122,37 @@ module Geographies = {
       children,
     );
 };
+
+module Markers = {
+  [@bs.module "react-simple-maps"]
+  external markersClass : ReasonReact.reactClass = "Markers";
+
+  let make = (children) =>
+    ReasonReact.wrapJsForReason(
+      ~reactClass=markersClass,
+      ~props=Js.Obj.empty(),
+      children,
+    );
+};
+
+module Marker = {
+  [@bs.module "react-simple-maps"]
+  external markerClass : ReasonReact.reactClass = "Marker";
+  [@bs.deriving abstract]
+  type markerT = {
+    coordinates: array(float),
+  };
+  [@bs.deriving abstract]
+  type jsProps = {
+    marker: markerT,
+  };
+  let make = (~marker, children) =>
+    ReasonReact.wrapJsForReason(
+      ~reactClass=markerClass,
+      ~props=
+        jsProps(
+          ~marker=marker,
+        ),
+      children,
+    );
+};
