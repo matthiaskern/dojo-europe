@@ -3,7 +3,7 @@ let component = ReasonReact.statelessComponent("App");
 open SimpleMaps;
 
 let createMarker = (_name, (lng, lat)) => {
-  <Marker marker=(Marker.markerT(~coordinates=[|lat, lng|]))><circle cx="0" cy="0" r="10" fill="red" /></Marker>;
+  <Marker marker=(Marker.markerT(~coordinates=[|lat, lng|]))><circle cx="0" cy="0" r="8" fill="rgba(128, 128, 128, 0.75)" /></Marker>;
 }
 
 let createMarkers = locations =>
