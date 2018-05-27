@@ -2,13 +2,19 @@ let component = ReasonReact.statelessComponent("App");
 
 open SimpleMaps;
 
+let createMarker = (_name, (lng, lat)) => {
+  <Marker marker=(Marker.markerT(~coordinates=[|lat, lng|]))><circle cx="0" cy="0" r="10" fill="red" /></Marker>;
+}
+
 let createMarkers = locations =>
   Array.map(
-    ((x, y)) => <Marker marker=(Marker.markerT(~coordinates=[|x, y|]))><circle cx="0" cy="0" r="10" fill="red" /></Marker>,
+    data => {
+      createMarker(Fetcher.username(data), Fetcher.location(data));
+    },
     locations,
   );
 
-let make = (~locations: array((float, float)), _children) => {
+let make = (~locations: array(Fetcher.data), _children) => {
   ...component,
   render: _self =>
     <ComposableMap
