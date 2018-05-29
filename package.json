@@ -2,12 +2,15 @@
   "name": "europe-wide-dojo",
   "scripts": {
     "build": "bsb -make-world",
-    "watch": "bsb -make-world -w",
+    "build:watch": "bsb -make-world -w",
+    "pack": "fpack src/index.bs.js",
+    "pack:watch": "fpack --development -w src/index.bs.js",
     "start": "serve",
     "clean": "bsb -clean-world"
   },
   "dependencies": {
     "bs-platform": "^3.1.4",
+    "fpack": "^0.4.1",
     "react": "^16.4.0",
     "react-simple-maps": "^0.12.1",
     "reason-react": "^0.4.1",

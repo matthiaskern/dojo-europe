@@ -3,3 +3,5 @@ lib
 /.merlin
 /src/index.bs.js
 *.bs.js
+/bundle/index.js
+
